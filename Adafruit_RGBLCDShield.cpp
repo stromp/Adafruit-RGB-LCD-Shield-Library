@@ -52,7 +52,7 @@
 // RGBLCDShield constructor is called).
 
 Adafruit_RGBLCDShield::Adafruit_RGBLCDShield() {
-  _i2cAddr = 0;
+  _i2cAddr = 1;
 
   _displayfunction = LCD_4BITMODE | LCD_1LINE | LCD_5x8DOTS;
   
@@ -116,7 +116,7 @@ void Adafruit_RGBLCDShield::begin(uint8_t cols, uint8_t lines, uint8_t dotsize) 
   if (_i2cAddr != 255) {
     //_i2c.begin(_i2cAddr);
     WIRE.begin();
-    _i2c.begin();
+    _i2c.begin(1);
 
     _i2c.pinMode(8, OUTPUT);
     _i2c.pinMode(6, OUTPUT);
@@ -204,7 +204,7 @@ void Adafruit_RGBLCDShield::begin(uint8_t cols, uint8_t lines, uint8_t dotsize) 
   // clear it off
   clear();
 
-  // Initialize to default text direction (for romance languages)
+  //  ialize to default text direction (for romance languages)
   _displaymode = LCD_ENTRYLEFT | LCD_ENTRYSHIFTDECREMENT;
   // set the entry mode
   command(LCD_ENTRYMODESET | _displaymode);
